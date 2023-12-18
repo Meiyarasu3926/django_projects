@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+.col-md-3 {
+    margin-top: 100px;
+}
+</style>
+
+{% if user.is_authenticated %}
+    <h1>Welcome {{user.username}}</h1>
+    <a href="{% url 'logout' %}" class="btn btn-danger">logout</a>
+{% else %}
+    <div class="col-md-3 offset-md-5">
+        <h1>Register</h1>
+        <br>
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="mb-4">
+                <input type="text" name="username" class="form-control" placeholder="Username">
+            </div>
+            <div class="mb-4">
+                <input type="email" name="email" placeholder="email" class="form-control">
+            </div>
+            <div class="mb-4">
+                <input type="password" name="password" class="form-control" placeholder="password">
+            </div>
+            <div class="mb-4">
+                <input type="password", name="password1" class="form-control", placeholder="conform password">
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+            <a href="{% url 'login' %}"><p>already user?</p></a>
+        </form>
+    </div>
+{% endif %}
+{% endblock %}

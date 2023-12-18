@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .col-md-3 {
+        margin-top: 100px;
+    }
+    </style>
+<div class="col-md-3 offset-md-4">
+    <h1>Login</h1>
+    <br>
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="mb-4">
+            <input type="text" name="username" class="form-control" placeholder="Username">
+        </div>
+        <div class="mb-4">
+            <input type="password" name="password" placeholder="password" class="form-control">
+        </div>
+        <button class="btn btn-primary">Login</button>
+        <a href="{% url 'home' %}"><p>new user?</p></a>
+    </form>
+</div>
+{% endblock %}
